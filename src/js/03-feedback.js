@@ -19,9 +19,13 @@ function saveData(e) {
 }
 function onFormSubmit(e) {
   e.preventDefault();
-  console.log(
-    `email:${e.target.email.value}  message:${e.target.message.value}`
-  );
+  if (itemString) {
+    formData = JSON.parse(itemString);
+    for (let key in formData) {
+      form.elements[key].value = formData[key];
+    }
+  }
+  console.log(formData);
   e.currentTarget.reset();
   formData = {};
   localStorage.removeItem(STORAGE_KEY);
