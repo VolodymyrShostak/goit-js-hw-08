@@ -5,9 +5,10 @@ const form = document.querySelector('.feedback-form');
 let formData = {};
 form.addEventListener('submit', onFormSubmit);
 form.addEventListener('input', throttle(saveData, 500));
+const itemString = localStorage.getItem(STORAGE_KEY);
 
-if (localStorage.getItem(STORAGE_KEY)) {
-  formData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+if (itemString) {
+  formData = JSON.parse(itemString);
   for (let key in formData) {
     form.elements[key].value = formData[key];
   }
@@ -18,7 +19,9 @@ function saveData(e) {
 }
 function onFormSubmit(e) {
   e.preventDefault();
-  console.log(formData);
+  console.log(
+    `email:${e.target.email.value}  message:${e.target.message.value}`
+  );
   e.currentTarget.reset();
   formData = {};
   localStorage.removeItem(STORAGE_KEY);
