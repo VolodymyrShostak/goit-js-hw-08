@@ -7,12 +7,6 @@ form.addEventListener('submit', onFormSubmit);
 form.addEventListener('input', throttle(saveData, 500));
 const itemString = localStorage.getItem(STORAGE_KEY);
 
-if (itemString) {
-  formData = JSON.parse(itemString);
-  for (let key in formData) {
-    form.elements[key].value = formData[key];
-  }
-}
 function saveData(e) {
   formData[e.target.name] = e.target.value;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
