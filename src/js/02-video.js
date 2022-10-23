@@ -11,6 +11,6 @@ if (localStorage.getItem(STORAGE_KEY)) {
 
 function getTime(data) {
   localStorage.setItem(STORAGE_KEY, data.seconds);
-  console.log(data.seconds);
+  console.log(data.seconds.toFixed(1));
 }
 player.on('timeupdate', throttle(getTime, 1000));
