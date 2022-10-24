@@ -19,8 +19,8 @@ function saveData(e) {
 }
 function onFormSubmit(e) {
   e.preventDefault();
-  const email = `${e.currentTarget.email.value}`;
-  const message = `${e.currentTarget.message.value}`;
+  const email = e.currentTarget.email.value;
+  const message = e.currentTarget.message.value;
   console.log({ email, message });
   e.currentTarget.reset();
   formData = {};
