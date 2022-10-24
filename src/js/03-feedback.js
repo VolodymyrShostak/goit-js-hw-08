@@ -19,8 +19,9 @@ function saveData(e) {
 }
 function onFormSubmit(e) {
   e.preventDefault();
-
-  console.log(formData);
+  const email = `${e.currentTarget.email.value}`;
+  const message = `${e.currentTarget.message.value}`;
+  console.log({ email, message });
   e.currentTarget.reset();
   formData = {};
   localStorage.removeItem(STORAGE_KEY);
